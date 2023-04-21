@@ -35,7 +35,7 @@ export class ArticleService {
     getArticleBySlug(slug: string): Observable<Article> {
         let article = Articles.find(x => x.slug ===  slug);
         return interval(1000).pipe(
-            switchMap(() => of(article)),
+            switchMap(() => of(article ?? Articles[1])),
             take(5)
         );
     }

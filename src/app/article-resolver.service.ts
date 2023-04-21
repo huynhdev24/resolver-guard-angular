@@ -13,6 +13,6 @@ export class ArticleResolver implements Resolve<Article> {
     
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Article | Observable<Article> | Promise<Article> {
         const slug = route.paramMap.get('slug');
-        return this.articleService.getArticleBySlug(slug);
+        return this.articleService.getArticleBySlug(slug ?? '');
     }
 }

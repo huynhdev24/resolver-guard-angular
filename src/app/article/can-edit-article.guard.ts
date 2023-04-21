@@ -13,7 +13,7 @@ export class CanEditArticleGuard implements CanActivate {
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-        return this.articleService.getArticleBySlug(next.paramMap.get('slug').pipe(
+        return this.articleService.getArticleBySlug(next.paramMap.get('slug') ?? '').pipe(
             map(article => article.author === this.userService.currentUser.username)
         );
     }

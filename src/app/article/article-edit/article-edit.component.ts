@@ -10,7 +10,7 @@ import {MatDialog} from '@angular/material/dialog';
     templateUrl: './article-edit.component.html',
     styleUrls: ['./article-edit.component.css'],
 })
-export class ArticleEditComponent implements OnInit {
+export class ArticleEditComponent implements OnInit {   
     slug$ = this.activatedRoute.paramMap.pipe(
         map(params => params.get('slug'))
     );

@@ -5,6 +5,9 @@ import { ArticleDetailComponent } from "./article-detail/article-detail.componen
 import { ArticleEditComponent } from "./article-edit/article-edit.component";
 import { ArticleComponent } from "./article.component";
 import { RouterModule, Routes } from "@angular/router";
+import { CanEditArticleGuard } from "./can-edit-article.guard";
+import { CanLeaveEditGuard } from "./can-leave-edit.guard";
+import { ArticleResolver } from "../article-resolver.service";
 
 const routes: Routes = [
     {
@@ -18,10 +21,15 @@ const routes: Routes = [
             {
                 path: ':slug',
                 component: ArticleDetailComponent,
+                resolve: {
+                    article: ArticleResolver,
+                }
             },
             {
                 path: ':slug/edit',
                 component: ArticleEditComponent,
+                canActivate: [CanEditArticleGuard],
+                canDeactivate: [CanLeaveEditGuard],
             }
         ]
     },

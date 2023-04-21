@@ -8,7 +8,9 @@ import { ArticleService } from './article/article.service';
     providedIn: 'root',
 })
 export class ArticleResolver implements Resolve<Article> {
+
     constructor(private articleService: ArticleService) {}
+    
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Article | Observable<Article> | Promise<Article> {
         const slug = route.paramMap.get('slug');
         return this.articleService.getArticleBySlug(slug);

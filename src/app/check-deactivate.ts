@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, CanDeactivate, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
 
 export interface CheckDeactivate {

@@ -16,7 +16,7 @@ export class ArticleDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.articles$ = this._route.data.pipe(
-            map(data => data.article)
+            map(data => data['article'])
         )
     }
 }

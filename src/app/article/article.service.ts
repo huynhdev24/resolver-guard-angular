@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Article } from "../model/article";
-import { of, Observable } from "rxjs";
-import { delay } from "rxjs";
+import { of, Observable, interval } from "rxjs";
+import { delay, switchMap, take } from "rxjs/operators";
 
 const Articles: Article[] = [
     {
@@ -34,6 +34,9 @@ export class ArticleService {
 
     getArticleBySlug(slug: string): Observable<Article> {
         let article = Articles.find(x => x.slug ===  slug)
-        return of(article).pipe(delay(500));
+        return interval(1000).pipe(
+            switchMap(() => of(article)),
+            take(5)
+        )
     }
 }
